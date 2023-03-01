@@ -1,18 +1,17 @@
 <script setup>
-    import Dropdown from 'v-dropdown'
 
-    function change(val) {
-        console.log(val)
-    }
 </script>
 
 <template>
     <h1>Yeah letsgo</h1>
     <p>hoi matta van clash</p>
-            <select value="Select a gym" placeholder="Select a gym">
-                <option> basic fit (Breda)</option>
-                <option> basic fit (Eindhoven)</option>
-            </select>
+
+    <select>
+        <option disabled selected hidden>Please enter a gym</option>
+        <option>basic fit (Breda)</option>
+        <option>basic fit (Eindhoven)</option>
+    </select>
+
 </template>
 
 <style scoped>
