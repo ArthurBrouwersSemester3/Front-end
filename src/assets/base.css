@@ -23,7 +23,7 @@
 
 /* semantic color variables for this project */
 :root {
-    --color-background: rgba(78,78,78);
+    --color-background: #181818;
     --color-background-soft: var(--vt-c-white-soft);
     --color-background-mute: var(--vt-c-white-mute);
     --color-border: var(--vt-c-divider-light-2);

@@ -9,6 +9,9 @@
         <option>Eindhoven</option>
         <option>s-Hertogenbosch</option>
     </select>
+    <br /> 
+    <br />
+    <button>Search</button>
 
 
 </template>
