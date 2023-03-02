@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/Homepage.vue'
+import Homepage from './components/Homepage.vue'
 </script>
 
 <template>

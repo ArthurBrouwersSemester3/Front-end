@@ -2,15 +2,8 @@
 
 </script>
 <template>
-    <div class="dropdown-menu">
-        <select>
-            <option disabled selected hidden>Please enter a gym</option>
-            <option>Breda</option>
-            <option>Eindhoven</option>
-            <option>s-Hertogenbosch</option>
-        </select>
-        <button>Search</button>
-    </div>
+<h1>Contact</h1>
+    <p>We from gym stars value our customers high.</p>
 
 </template>
 
@@ -36,11 +29,6 @@
         .greetings h3 {
             text-align: left;
         }
-    }
-
-    .dropdown-menu{
-        display: flex;
-        place-items: center;
     }
 
 
