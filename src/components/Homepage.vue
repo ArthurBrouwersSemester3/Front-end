@@ -29,10 +29,4 @@
         }
     }
 
-    .dropdown-menu{
-        display: flex;
-        place-items: center;
-    }
-
-
 </style>

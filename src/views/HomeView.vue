@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import TheWelcome from '../components/Homepage.vue'
+
+import router from '@/router'
+
+function SearchGym(){
+
+    console.log("1")
+    router.push({ name: 'contact' })
+}
 </script>
+
 
 <template>
     <main>
@@ -13,7 +22,7 @@ import TheWelcome from '../components/Homepage.vue'
                 <option>Eindhoven</option>
                 <option>s-Hertogenbosch</option>
             </select>
-            <button>Search</button>
+               <button @click="SearchGym">Search</button>       
         </div>
     </main>
 </template>

@@ -2,7 +2,7 @@
 
 #app {
   width: 1363px;
-  height: 919px;
+  height: 850px;
   margin: 0 auto;
   padding: 2rem;
 
@@ -45,4 +45,6 @@ a,
         display: grid;
         place-items: center;
     }
+
+
 }
