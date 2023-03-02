@@ -2,8 +2,7 @@
 
 </script>
 <template>
-<h1>Contact</h1>
-    <p>We from gym stars value our customers high.</p>
+
 
 </template>
 
