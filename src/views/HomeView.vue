@@ -2,8 +2,6 @@
     import TheWelcome from '../components/Homepage.vue'
     import router from '@/router'
 
-import router from '@/router'
-
 </script>
 
     console.log("1")
@@ -13,7 +11,7 @@ import router from '@/router'
     let selectedOption = "";
     function SearchGym() {
         console.log(selectedOption)
-        router.push({ name: 'contact' })
+        router.push({ name: 'gym' })
     }
 
 </script>
