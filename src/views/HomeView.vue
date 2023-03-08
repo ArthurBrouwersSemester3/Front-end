@@ -6,7 +6,7 @@ import router from '@/router'
 function SearchGym(){
 
     console.log("1")
-    router.push({ name: 'contact' })
+    router.push({ name: 'gym' })
 }
 </script>
 
