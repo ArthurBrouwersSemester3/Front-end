@@ -2,16 +2,13 @@
     import TheWelcome from '../components/Homepage.vue'
     import router from '@/router'
 
-    export default {
-        data() {
-            return {
-                chosenid: 0
-            }
-        }
-    }
+import router from '@/router'
 
 </script>
 
+    console.log("1")
+    router.push({ name: 'gym' })
+}
 <script setup>
     let selectedOption = "";
     function SearchGym() {
