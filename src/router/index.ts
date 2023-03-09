@@ -20,10 +20,12 @@ const router = createRouter({
 
 
       {
-          path: '/gym',
+          path: '/gym/:myString',
           name: 'gym',
           component: GymView,
+          props: true
       },
+
   ]
 })
 

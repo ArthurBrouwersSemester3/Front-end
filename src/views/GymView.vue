@@ -1,10 +1,23 @@
-<script setup lang="ts">
+<script setup>
 import Gymgraph from '../components/Gym.vue'
 </script>
 
+
 <template>
     <main>
-        <h1>Eindhoven</h1>
+        <div>{{ myString }}</div>
         <gymgraph />
     </main>
 </template>
+
+
+<script>
+    export default {
+        props: {
+            myString: {
+                type: String,
+                required: true
+            }
+        }
+    }
+</script>
