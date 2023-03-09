@@ -1,5 +1,5 @@
 ﻿<template>
-
+    <div>{{ myString }}</div>
     <Chart :size="{ width: 500, height: 420 }"
            :data="data"
            :margin="margin"
@@ -45,6 +45,15 @@
         { name: 'Sat', avg: 10 },
         { name: 'Sun', avg: 10 }
     ]
+    export const DenboschData = [
+        { name: 'Mon', avg: 10 },
+        { name: 'Tue', avg: 20 },
+        { name: 'Wed', avg: 30 },
+        { name: 'Thu', avg: 40 },
+        { name: 'fri', avg: 50 },
+        { name: 'Sat', avg: 60 },
+        { name: 'Sun', avg: 70 }
+    ]
     let chosen = ''
 
     let data = ref()
@@ -63,12 +72,12 @@
             console.log(chosen)
             if (chosen === 'Eindhoven') {
                 data = ref(EindhovenData)
-                console.log('test')
             }
             else if (chosen === 'Breda') {
                 data = ref(BredaData)
-                console.log('test')
-
+            }
+            else if (chosen === 'Denbosch') {
+                data = ref(DenboschData)
             }
             const direction = ref('horizontal')
             const margin = ref({
