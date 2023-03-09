@@ -49,6 +49,8 @@
 
     let data = ref()
     export default defineComponent({
+        name: 'LineChart',
+        components: { Chart, Grid, Line },
 
         props: {
             myString: {
@@ -56,15 +58,9 @@
                 required: true
             }
         },
-        mounted() {
-            chosen = this.myString
+        setup(props) {
+            chosen = props.myString
             console.log(chosen)
-        },
-
-
-        name: 'LineChart',
-        components: { Chart, Grid, Line },
-        setup() {
             if (chosen === 'Eindhoven') {
                 data = ref(EindhovenData)
                 console.log('test')
@@ -97,6 +93,6 @@
             })
 
             return { data, direction, margin, axis }
-        }
+        },
     })
 </script>
