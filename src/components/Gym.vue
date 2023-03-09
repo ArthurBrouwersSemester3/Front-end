@@ -1,4 +1,5 @@
 ﻿<template>
+
     <Chart :size="{ width: 500, height: 420 }"
            :data="data"
            :margin="margin"
@@ -25,6 +26,7 @@
 <script lang="ts">
     import { defineComponent, ref } from 'vue'
     import { Chart, Grid, Line } from 'vue3-charts'
+
     export const EindhovenData = [
         { name: 'Mon', avg: 80},
         { name: 'Tue', avg: 90},
@@ -43,17 +45,34 @@
         { name: 'Sat', avg: 10 },
         { name: 'Sun', avg: 10 }
     ]
-    let chosen = 'Eindhoven'
+    let chosen = ''
+
     let data = ref()
     export default defineComponent({
+
+        props: {
+            myString: {
+                type: String,
+                required: true
+            }
+        },
+        mounted() {
+            chosen = this.myString
+            console.log(chosen)
+        },
+
+
         name: 'LineChart',
         components: { Chart, Grid, Line },
         setup() {
             if (chosen === 'Eindhoven') {
                 data = ref(EindhovenData)
+                console.log('test')
             }
             else if (chosen === 'Breda') {
                 data = ref(BredaData)
+                console.log('test')
+
             }
             const direction = ref('horizontal')
             const margin = ref({
