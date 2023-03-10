@@ -1,9 +1,37 @@
-<script setup lang="ts">
-import TheWelcome from '../components/HelloWorld.vue'
+<script>
+    import TheWelcome from '../components/Homepage.vue'
+    import router from '@/router'
+    let myString = "";
+
+    export default {
+        methods: {
+            goToNextPage() {
+                router.push({ name: 'gym', params: { myString } })
+            }
+        }
+    }
 </script>
 
+
+<script setup>
+    function SearchGym() {
+        console.log(selectedOption)
+        router.push({name:'gym'})
+    }
+
+</script>
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+
+        <TheWelcome />
+        <div class="dropdown-menu">
+            <select name="category" id="category" v-model="myString">
+                <option disabled selected hidden value="">Please enter a gym</option>
+                <option>Breda</option>
+                <option>Eindhoven</option>
+                <option>Den Bosch</option>
+            </select>
+            <button @click="goToNextPage">Search</button>
+        </div>
+    </main>
 </template>
