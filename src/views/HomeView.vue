@@ -5,8 +5,8 @@
     export default {
         methods: {
             goToNextPage() {
-               // router.push({ name: 'gym', params: { myString } })
-                router.push({ name: 'test' })
+               router.push({ name: 'gym', params: { myString } })
+               // router.push({ name: 'test' })
             }
         }
     }

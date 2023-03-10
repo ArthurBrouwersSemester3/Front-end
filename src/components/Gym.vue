@@ -1,5 +1,4 @@
-﻿po<template>
-    <div>{{ myString }}</div>
+﻿<template>
     <Chart :size="{ width: 500, height: 420 }"
            :data="data"
            :margin="margin"
@@ -8,15 +7,18 @@
 
         <template #layers>
             <Grid strokeDasharray="2,2" />
-            <Line :dataKeys="['name', 'avg']" />
+            <Bar :dataKeys="['name', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
+            <Bar :dataKeys="['name', 'avg']" :barStyle="{ fill: '#0096c7' }" />
+            <Bar :dataKeys="['name', 'inc']" :barStyle="{ fill: '#48cae4' }" />
+            <Marker :value="1000" label="Avg." color="#e76f51" strokeWidth="2" strokeDasharray="6 6" />
         </template>
 
         <template #widgets>
             <Tooltip borderColor="#48CAE4"
                      :config="{
-          name: { hide: true },
-          pl: { color: '#0077b6' },
-          avg: { label: 'averange', color: 'red' },
+          pl: { color: '#90e0ef' },
+          avg: { color: '#0096c7' },
+          inc: { color: '#48cae4' }
         }" />
         </template>
 
@@ -25,7 +27,7 @@
 
 <script lang="ts">
     import { defineComponent, ref } from 'vue'
-    import { Bar, Chart, Grid, Line } from 'vue3-charts'
+    import { Bar, Chart, Grid} from 'vue3-charts'
 
     export const EindhovenData = [
         { name: 'Mon', avg: 80},
@@ -59,7 +61,7 @@
     let data = ref()
     export default defineComponent({
         name: 'LineChart',
-        components: { Chart, Grid, Line },
+        components: { Chart, Grid, Bar},
 
         props: {
             myString: {
