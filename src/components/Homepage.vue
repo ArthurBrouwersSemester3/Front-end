@@ -3,17 +3,10 @@
 </script>
 <template>
 
-    <select>
-        <option disabled selected hidden>Please enter a gym</option>
-        <option>Breda</option>
-        <option>Eindhoven</option>
-        <option>s-Hertogenbosch</option>
-    </select>
-
-
 </template>
 
 <style scoped>
+
     h1 {
         font-weight: 500;
         font-size: 2.6rem;
@@ -35,4 +28,5 @@
             text-align: left;
         }
     }
+
 </style>

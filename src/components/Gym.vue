@@ -76,7 +76,7 @@
             else if (chosen === 'Breda') {
                 data = ref(BredaData)
             }
-            else if (chosen === 'Den Bosch') {
+            else if (chosen === 'Denbosch') {
                 data = ref(DenboschData)
             }
             const direction = ref('horizontal')

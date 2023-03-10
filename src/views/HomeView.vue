@@ -29,7 +29,7 @@
                 <option disabled selected hidden value="">Please enter a gym</option>
                 <option>Breda</option>
                 <option>Eindhoven</option>
-                <option>Den Bosch</option>
+                <option>Denbosch</option>
             </select>
             <button @click="goToNextPage">Search</button>
         </div>
