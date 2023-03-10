@@ -1,4 +1,4 @@
-﻿<template>
+﻿po<template>
     <div>{{ myString }}</div>
     <Chart :size="{ width: 500, height: 420 }"
            :data="data"
@@ -25,7 +25,7 @@
 
 <script lang="ts">
     import { defineComponent, ref } from 'vue'
-    import { Chart, Grid, Line } from 'vue3-charts'
+    import { Bar, Chart, Grid, Line } from 'vue3-charts'
 
     export const EindhovenData = [
         { name: 'Mon', avg: 80},
@@ -95,7 +95,7 @@
                     }
                 },
                 secondary: {
-                    domain: ['dataMin', 'dataMax + 10'],
+                    domain: ['0', '100'],
                     type: 'linear',
                     ticks: 8
                 }

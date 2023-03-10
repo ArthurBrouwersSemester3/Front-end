@@ -1,12 +1,12 @@
 <script>
-    import TheWelcome from '../components/Homepage.vue'
     import router from '@/router'
     let myString = "";
 
     export default {
         methods: {
             goToNextPage() {
-                router.push({ name: 'gym', params: { myString } })
+               // router.push({ name: 'gym', params: { myString } })
+                router.push({ name: 'test' })
             }
         }
     }
@@ -22,8 +22,6 @@
 </script>
 <template>
     <main>
-
-        <TheWelcome />
         <div class="dropdown-menu">
             <select name="category" id="category" v-model="myString">
                 <option disabled selected hidden value="">Please enter a gym</option>
