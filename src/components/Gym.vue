@@ -3,8 +3,7 @@
            :data="data"
            :margin="margin"
            :direction="direction"
-           :axis="axis"
-           :color="#FFFFFF">
+           :axis="axis">
 
         <template #layers>
             <Grid strokeDasharray="2,2" />
