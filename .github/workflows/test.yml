@@ -24,4 +24,4 @@ jobs:
           vue3-charts --save \
           resize-observer-polyfill --save-dev
     - name: Run tests
-      run: npm test
+      run: npm run test:unit
