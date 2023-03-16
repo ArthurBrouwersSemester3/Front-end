@@ -9,15 +9,9 @@
             <Grid strokeDasharray="2,2" />
             <Bar :dataKeys="['name', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
             <Bar :dataKeys="['name', 'avg']" :barStyle="{ fill: '#84a2f4' }" />
-            <Marker :value="1000" label="Avg." color="#FFFFFF" strokeWidth="2" strokeDasharray="6 6" />
         </template>
 
         <template #widgets>
-            <Tooltip borderColor="#FFFFFF"
-                     :config="{
-          pl: { color: '#FFFFFF' },
-          avg: { color: '#FFFFFF' },
-        }" />
         </template>
 
     </Chart>
@@ -54,7 +48,7 @@
         { name: 'Sat', avg: 60 },
         { name: 'Sun', avg: 70 }
     ]
-    let chosen = ''
+   
 
     let data = ref()
     export default defineComponent({
@@ -68,16 +62,18 @@
             }
         },
         setup(props) {
-            chosen = props.myString
-            console.log(chosen)
-            if (chosen === 'Eindhoven') {
+            const chosen = ref('');
+            if (props.myString === 'Eindhoven') {
                 data = ref(EindhovenData)
+                chosen.value = 'Eindhoven';
             }
-            else if (chosen === 'Breda') {
+            else if (props.myString === 'Breda') {
                 data = ref(BredaData)
+                chosen.value = 'Breda';
             }
-            else if (chosen === 'Denbosch') {
+            else if (props.myString === 'Denbosch') {
                 data = ref(DenboschData)
+                chosen.value = 'Denbosch';
             }
             const direction = ref('horizontal')
             const margin = ref({
@@ -101,7 +97,7 @@
                 }
             })
 
-            return { data, direction, margin, axis }
+            return { chosen, data, direction, margin, axis }
         },
     })
 </script>

@@ -5,6 +5,7 @@ import { mount } from '@vue/test-utils';
 import MyComponent from '../Contact.vue';
 import GymView from '@/views/GymView.vue'
 import MyView from '@/views/HomeView.vue'
+import Gym from '@/components/Gym.vue'
 
 window.ResizeObserver = ResizeObserver
 
@@ -41,4 +42,24 @@ describe('GymView', () => {
         })
         expect(wrapper.find('h1').text()).toBe('Breda')
     })
-})
+}),
+    describe('Gym', () => {
+        it('Loads correct data for graph', () => {
+            const wrapper = mount(Gym, {
+                props: {
+                    myString: 'Eindhoven'
+                }
+            });
+
+            expect(wrapper.vm.chosen).toBe('Eindhoven')
+            expect(wrapper.vm.data).toEqual([
+                { name: 'Mon', avg: 80 },
+                { name: 'Tue', avg: 90 },
+                { name: 'Wed', avg: 40 },
+                { name: 'Thu', avg: 10 },
+                { name: 'fri', avg: 10 },
+                { name: 'Sat', avg: 40 },
+                { name: 'Sun', avg: 90 }
+            ])
+        });
+    });
