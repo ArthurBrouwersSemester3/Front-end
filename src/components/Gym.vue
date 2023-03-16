@@ -1,5 +1,4 @@
 ﻿<template>
-    <div>{{ myString }}</div>
     <Chart :size="{ width: 500, height: 420 }"
            :data="data"
            :margin="margin"
@@ -8,16 +7,11 @@
 
         <template #layers>
             <Grid strokeDasharray="2,2" />
-            <Line :dataKeys="['name', 'avg']" />
+            <Bar :dataKeys="['name', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
+            <Bar :dataKeys="['name', 'avg']" :barStyle="{ fill: '#84a2f4' }" />
         </template>
 
         <template #widgets>
-            <Tooltip borderColor="#48CAE4"
-                     :config="{
-          name: { hide: true },
-          pl: { color: '#0077b6' },
-          avg: { label: 'averange', color: 'red' },
-        }" />
         </template>
 
     </Chart>
@@ -25,7 +19,7 @@
 
 <script lang="ts">
     import { defineComponent, ref } from 'vue'
-    import { Chart, Grid, Line } from 'vue3-charts'
+    import { Bar, Chart, Grid} from 'vue3-charts'
 
     export const EindhovenData = [
         { name: 'Mon', avg: 80},
@@ -54,13 +48,13 @@
         { name: 'Sat', avg: 60 },
         { name: 'Sun', avg: 70 }
     ]
-    let chosen = ''
+   
 
     let data = ref()
     export default defineComponent({
         name: 'LineChart',
-        components: { Chart, Grid, Line },
-
+        components: { Chart, Grid, Bar},
+   
         props: {
             myString: {
                 type: String,
@@ -68,16 +62,18 @@
             }
         },
         setup(props) {
-            chosen = props.myString
-            console.log(chosen)
-            if (chosen === 'Eindhoven') {
+            const chosen = ref('');
+            if (props.myString === 'Eindhoven') {
                 data = ref(EindhovenData)
+                chosen.value = 'Eindhoven';
             }
-            else if (chosen === 'Breda') {
+            else if (props.myString === 'Breda') {
                 data = ref(BredaData)
+                chosen.value = 'Breda';
             }
-            else if (chosen === 'Denbosch') {
+            else if (props.myString === 'Denbosch') {
                 data = ref(DenboschData)
+                chosen.value = 'Denbosch';
             }
             const direction = ref('horizontal')
             const margin = ref({
@@ -95,13 +91,13 @@
                     }
                 },
                 secondary: {
-                    domain: ['dataMin', 'dataMax + 10'],
+                    domain: ['0', '100'],
                     type: 'linear',
                     ticks: 8
                 }
             })
-
-            return { data, direction, margin, axis }
+    //
+            return { chosen, data, direction, margin, axis }
         },
     })
 </script>

@@ -5,6 +5,7 @@
 
 <template>
     <main>
+        <h1>{{myString}} </h1>
         <gymgraph :my-string="myString"></gymgraph>
     </main>
 </template>

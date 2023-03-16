@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyComponent > renders correctly 1`] = `""`;
+
+exports[`MyView > renders correctly 1`] = `""`;
