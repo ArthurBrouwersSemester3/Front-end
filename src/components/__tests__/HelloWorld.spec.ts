@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils';
 import MyComponent from '../Contact.vue';
+import MyView from '@/views/HomeView.vue'
 
 describe('MyComponent', () => {
     it('renders correctly', () => {
@@ -9,39 +10,20 @@ describe('MyComponent', () => {
         expect(wrapper.html()).toMatchSnapshot();
     });
 }),
-describe('Dropdown', () => {
-    it('should show options when clicked', () => {
-        document.body.innerHTML = `
-      <div id="app">
-        <select id="dropdown">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
-      </div>
-    `
 
-        const select = document.querySelector('#dropdown')
-        select.click()
+    describe('MyView', () => {
+        it('should select an option when clicked', () => {
+            const wrapper = mount(MyView)
 
-        expect(document.querySelector('#dropdown').options.length).toBe(3)
+            // Find the select element inside the MyView component
+            const select = wrapper.find('#category')
+
+            // Simulate selecting an option
+            select.element.value = 'Eindhoven'
+            select.trigger('change')
+
+            // Assert that the select element has the correct value
+            expect(select.element.value).toBe('Eindhoven')
+            expect(select.element.value).not.toBe('Breda')
+        })
     })
-
-    it('should select an option when clicked', () => {
-        document.body.innerHTML = `
-      <div id="app">
-        <select id="dropdown">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
-      </div>
-    `
-
-        const select = document.querySelector('#dropdown')
-        select.value = 'option2'
-        select.dispatchEvent(new Event('change'))
-
-        expect(select.value).toBe('option2')
-    })
-})
