@@ -1,8 +1,13 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, test } from 'vitest'
+import ResizeObserver from 'resize-observer-polyfill'
 
 import { mount } from '@vue/test-utils';
 import MyComponent from '../Contact.vue';
+import GymView from '@/views/GymView.vue'
 import MyView from '@/views/HomeView.vue'
+
+window.ResizeObserver = ResizeObserver
+
 
 describe('MyComponent', () => {
     it('renders correctly', () => {
@@ -27,3 +32,13 @@ describe('MyComponent', () => {
             expect(select.element.value).not.toBe('Breda')
         })
     })
+describe('GymView', () => {
+    test('displays chosen gym', () => {
+        const wrapper = mount(GymView, {
+            props: {
+                myString: 'Breda'
+            }
+        })
+        expect(wrapper.find('h1').text()).toBe('Breda')
+    })
+})
