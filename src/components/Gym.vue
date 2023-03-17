@@ -65,7 +65,7 @@
             const chosen = ref('');
             if (props.myString === 'Eindhoven') {
                 data = ref(EindhovenData)
-                chosen.value = 'Breda';
+                chosen.value = 'Eindhoven';
             }
             else if (props.myString === 'Breda') {
                 data = ref(BredaData)
