@@ -10,7 +10,7 @@ on:
 jobs:
   test:
     # Define the operating system for the job
-    runs-on: ubuntu-latest-16.04
+    runs-on: ubuntu-latest
 
     # Define the steps to run
     steps:
