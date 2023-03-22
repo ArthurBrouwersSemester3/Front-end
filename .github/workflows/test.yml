@@ -1,5 +1,3 @@
-# This is a YAML configuration file for a Node.js project
-
 # Define the name of the job
 name: Test
 
@@ -8,28 +6,13 @@ on:
   push:
     branches: [ Development ]
 
-# Define the jobs for the workflow
+# Define the steps for the job
 jobs:
-  build:
-    runs-on: ubuntu-latest-16.04
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install dependencies
-      run: |
-        npm install \
-          vue3-charts --save \
-          resize-observer-polyfill --save-dev
-    - name: Build
-      run: npm run build
-    - name: Deploy
-      run: npm run deploy
-      if: success()
-
   test:
-    needs: build
+    # Define the operating system for the job
     runs-on: ubuntu-latest
-    if: ${{ needs.build.result != 'failure' }}
+
+    # Define the steps to run
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -40,3 +23,10 @@ jobs:
           resize-observer-polyfill --save-dev
     - name: Run tests
       run: npm run test:unit
+
+    # Define the step to push changes if the test passes
+    - name: Push changes
+      if: ${{ job.status == 'success' }}
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: CI build passed [skip ci]
