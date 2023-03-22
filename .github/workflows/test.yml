@@ -8,13 +8,28 @@ on:
   push:
     branches: [ Development ]
 
-# Define the steps for the job
+# Define the jobs for the workflow
 jobs:
-  test:
-    # Define the operating system for the job
+  build:
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        npm install \
+          vue3-charts --save \
+          resize-observer-polyfill --save-dev
+    - name: Build
+      run: npm run build
+    - name: Deploy
+      run: npm run deploy
+      if: success()
 
-    # Define the steps to run
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ needs.build.result != 'failure' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -25,8 +40,3 @@ jobs:
           resize-observer-polyfill --save-dev
     - name: Run tests
       run: npm run test:unit
-    - name: Push changes
-      if: ${{ success() }}
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: CI build passed [skip ci]
