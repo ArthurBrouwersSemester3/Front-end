@@ -96,7 +96,7 @@
                     ticks: 8
                 }
             })
-
+    //
             return { chosen, data, direction, margin, axis }
         },
     })
