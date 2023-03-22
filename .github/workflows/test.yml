@@ -26,8 +26,7 @@ jobs:
     - name: Run tests
       run: npm run test:unit
     - name: Push changes
-      if: ${{ failure() != true }}
+      if: ${{ success() }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: CI build passed [skip ci]
-
