@@ -7,7 +7,6 @@ name: Test
 on:
   push:
     branches: [ Development ]
-    if: "!github.job('test').conclusion == 'failure'"
 
 # Define the steps for the job
 jobs:
@@ -26,3 +25,8 @@ jobs:
           resize-observer-polyfill --save-dev
     - name: Run tests
       run: npm run test:unit
+    - name: Push changes
+      if: ${{ success() }}
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: CI build passed [skip ci]
