@@ -16,7 +16,7 @@
 <script>
     let daynumber = 0
     export default {
-
+        //
         components: {
             Gymgraph
         },
