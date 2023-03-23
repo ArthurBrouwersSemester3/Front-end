@@ -25,3 +25,6 @@ jobs:
           resize-observer-polyfill --save-dev
     - name: Run tests
       run: npm run test:unit
+    - name: Push changes if tests pass
+      if: ${{ success() }}
+      run: git push
