@@ -28,4 +28,7 @@ jobs:
       run: npm run test:unit
     - name: Push changes if tests pass
       if: success()
-      run: git push
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
