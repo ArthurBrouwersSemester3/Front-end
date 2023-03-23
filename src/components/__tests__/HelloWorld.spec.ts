@@ -47,7 +47,7 @@ describe('GymView', () => {
         it('Loads correct data for graph', () => {
             const wrapper = mount(Gym, {
                 props: {
-                    myString: 'Breda'
+                    myString: 'Eindhoven'
                 }
             });
             //
