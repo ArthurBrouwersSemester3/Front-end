@@ -1,34 +1,57 @@
-# This is a YAML configuration file for a Node.js project
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-# Define the name of the job
-name: Test
+name: Build
 
-# Define the trigger for the job
 on:
- push:
-    branches: [ Development ]
+  pull_request:
+    branches: [ "main", "Development" ]
+  push:
+    branches: [ "main", "Development" ]
 
-
-# Define the steps for the job
 jobs:
-  test:
-    # Define the operating system for the job
+
+  build-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    # Define the steps to run
+    # Special thanks to Cory Rylan from https://coryrylan.com/blog/building-angular-cli-projects-with-github-actions for providing the answer to Chrome usage in the GitHub CLI
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2.4.2
-    - name: Install dependencies
-      run: |
-        npm install \
-          vue3-charts --save \
-          resize-observer-polyfill --save-dev
-    - name: Run tests
-      run: npm run test:unit
-    - name: Push changes if tests pass
-      if: success()
-      uses: ad-m/github-push-action@v0.6.0
+    - uses: actions/checkout@v3
+    
+    - name: Caching node modules
+      uses: actions/cache@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Install, Build and Test
+      run: | 
+        npm install 
+        npm install vue3-charts --save
+        npm install resize-observer-polyfill --save-dev
+        npm run test:unit
+        
+    - name: Echo Test Directory
+      run: |
+        cd $GITHUB_WORKSPACE/coverage/
+        tree
+      #    echo "LCOV FILE CONTENTS"
+      #    cat /home/runner/work/tick-frontend/tick-frontend/coverage/tick-frontend/lcov.info
+      
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
