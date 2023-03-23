@@ -5,7 +5,9 @@ name: Test
 
 # Define the trigger for the job
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - Development
 
 # Define the steps for the job
 jobs:
