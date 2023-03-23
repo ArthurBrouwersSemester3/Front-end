@@ -5,9 +5,10 @@ name: Test
 
 # Define the trigger for the job
 on:
-  push:
+  pull_request:
     branches:
       - Development
+
 
 # Define the steps for the job
 jobs:
