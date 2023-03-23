@@ -53,7 +53,11 @@
                     console.log(daynumber)
                     this.handleButtonClick(daynumber.toString());
                 }
-               
+            
+                if(daynumber === 5)
+                {
+                   this.errormessage = ""
+                }
             },
             onNext() {
                 if (daynumber === 6) {
@@ -63,6 +67,9 @@
                     daynumber++,
                     console.log(daynumber)
                     this.handleButtonClick(daynumber.toString());
+                }
+                if (daynumber === 1) {
+                    this.errormessage = ""
                 }
               
             }
