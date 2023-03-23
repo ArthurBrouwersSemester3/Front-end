@@ -6,7 +6,8 @@ name: Test
 # Define the trigger for the job
 on:
   push:
-    branches: [ Development ]
+    branches:
+      - Development
 
 # Define the steps for the job
 jobs:
