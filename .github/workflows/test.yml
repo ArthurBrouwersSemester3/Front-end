@@ -6,11 +6,7 @@ name: Test
 # Define the trigger for the job
 on:
   push:
-    branches:
-      - Development
-    # Ignore pushes to the Development branch until the CI job is successful
-    branches-ignore:
-      - Development
+    branches: [ Development ]
 
 # Define the steps for the job
 jobs:
