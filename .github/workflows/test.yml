@@ -23,4 +23,19 @@ jobs:
           resize-observer-polyfill --save-dev
     - name: Run tests
       run: npm run test:unit
+      
+    - name: Create Pull Request
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const headBranch = "Main";
+          const baseBranch = "Development";
+          const response = await github.pulls.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            head: headBranch,
+            base: baseBranch
+          });
+          console.log(response.data.html_url);
 
