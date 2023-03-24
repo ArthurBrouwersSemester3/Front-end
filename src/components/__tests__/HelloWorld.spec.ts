@@ -33,6 +33,7 @@ describe('MyComponent', () => {
             expect(select.element.value).not.toBe('Breda')
         })
     })
+    //
 describe('GymView', () => {
     test('displays chosen gym', () => {
         const wrapper = mount(GymView, {
