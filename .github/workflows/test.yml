@@ -1,28 +1,26 @@
 # This is a YAML configuration file for a Node.js project
-
 # Define the name of the job
 name: Test
-
 # Define the trigger for the job
 on:
   push:
-    branches: [ Development ]
-    if: "!github.job('test').conclusion == 'failure'"
-
+    branches:
+      - Development
 # Define the steps for the job
 jobs:
   test:
     # Define the operating system for the job
     runs-on: ubuntu-latest
-
     # Define the steps to run
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.2
     - name: Install dependencies
+
       run: |
         npm install \
           vue3-charts --save \
           resize-observer-polyfill --save-dev
     - name: Run tests
       run: npm run test:unit
+
