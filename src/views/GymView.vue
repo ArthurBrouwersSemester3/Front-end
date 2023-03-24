@@ -5,8 +5,8 @@
 
 <template>
     <main>
-        <h1>{{myString}} {{buttonValue}}</h1> 
-        <h1>{{errormessage}}</h1>
+        <h1>{{myString}}</h1> 
+        <p>{{errormessage}} {{buttonValue}}</p>
         <button @click="onPrevious">Previous</button> <button @click="onNext">Next</button>
         <gymgraph :my-string="myString" :button-value="buttonValue"></gymgraph>
     </main>
