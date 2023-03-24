@@ -7,6 +7,7 @@
             goToNextPage() {
                router.push({ name: 'gym', params: { myString } })
                // router.push({ name: 'test' })
+               // testing
             }
         }
     }
