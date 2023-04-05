@@ -50,7 +50,7 @@ describe('GymView', () => {
                     myString: 'Breda'
                 }
             });
-            //testtttt
+            //test
             expect(wrapper.vm.chosen).toBe('Eindhoven')
             expect(wrapper.vm.data).toEqual([
                 { name: 'Mon', avg: 80 },
