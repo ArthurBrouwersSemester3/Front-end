@@ -1,17 +1,16 @@
-# This is a YAML configuration file for a Node.js project
-# Define the name of the job
-name: Test
 # Define the trigger for the job
+
+name: CI
+
 on:
-  pull_request:
-    branches:
-      - Development
+ push:
+    branches: [ Development ]
+
+
 # Define the steps for the job
 jobs:
-  test:
-    # Define the operating system for the job
+  build:
     runs-on: ubuntu-latest
-    # Define the steps to run
     steps:
     - name: Checkout code
       uses: actions/checkout@v2.4.2
@@ -38,4 +37,3 @@ jobs:
             base: baseBranch
           });
           console.log(response.data.html_url);
-
