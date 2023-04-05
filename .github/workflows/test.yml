@@ -15,6 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2.4.2
     - name: Install dependencies
+
       run: |
         npm install \
           vue3-charts --save \
@@ -22,15 +23,17 @@ jobs:
     - name: Run tests
       run: npm run test:unit
       
-  deploy:
-    needs: build
-    if: success()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Push changes to GitHub
-        uses: ad-m/github-push-action@master
-        with:
-          branch: development
-          force: true
+    - name: Create Pull Request
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const headBranch = "Main";
+          const baseBranch = "Development";
+          const response = await github.pulls.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            head: headBranch,
+            base: baseBranch
+          });
+          console.log(response.data.html_url);

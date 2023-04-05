@@ -47,10 +47,10 @@ describe('GymView', () => {
         it('Loads correct data for graph', () => {
             const wrapper = mount(Gym, {
                 props: {
-                    myString: 'Eindhoven'
+                    myString: 'Breda'
                 }
             });
-            //test
+            
             expect(wrapper.vm.chosen).toBe('Eindhoven')
             expect(wrapper.vm.data).toEqual([
                 { name: 'Mon', avg: 80 },
