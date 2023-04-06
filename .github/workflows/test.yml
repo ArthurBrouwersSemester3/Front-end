@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Caching node modules
       uses: actions/cache@v3
       with:
@@ -35,7 +35,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    
+
     - name: Install, Build and Test
       run: | 
         npm install 
@@ -49,7 +49,7 @@ jobs:
         tree
       #    echo "LCOV FILE CONTENTS"
       #    cat /home/runner/work/tick-frontend/tick-frontend/coverage/tick-frontend/lcov.info
-      
+
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:

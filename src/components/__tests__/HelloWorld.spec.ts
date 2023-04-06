@@ -47,25 +47,19 @@ describe('GymView', () => {
         it('Loads correct data for graph', () => {
             const wrapper = mount(Gym, {
                 props: {
-                    myString: 'Eindhoven'
+                    myString: 'Breda'
                 }
             });
-            //testtt
+            //testt
             expect(wrapper.vm.chosen).toBe('Eindhoven')
             expect(wrapper.vm.data).toEqual([
-                { name: '8:00', avg: 80 },
-                { name: '9:00', avg: 90 },
-                { name: '10:00', avg: 40 },
-                { name: '11:00', avg: 10 },
-                { name: '12:00', avg: 10 },
-                { name: '13:00', avg: 40 },
-                { name: '14:00', avg: 90 },
-                { name: '15:00', avg: 90 },
-                { name: '16:00', avg: 90 },
-                { name: '17:00', avg: 90 },
-                { name: '18:00', avg: 90 },
-                { name: '19:00', avg: 90 },
-                { name: '20:00', avg: 90 }
+                { name: 'Mon', avg: 80 },
+                { name: 'Tue', avg: 90 },
+                { name: 'Wed', avg: 40 },
+                { name: 'Thu', avg: 10 },
+                { name: 'fri', avg: 10 },
+                { name: 'Sat', avg: 40 },
+                { name: 'Sun', avg: 90 }
             ])
         });
     });
