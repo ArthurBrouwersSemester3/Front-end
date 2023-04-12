@@ -1,36 +1,48 @@
+<template>
+    <div>
+        <main>
+            <div class="dropdown-menu">
+                <select name="category" id="category" v-model="myString">
+                    <option disabled selected hidden value="">Please enter a gym</option>
+                    <option v-for="message in messages" :key="message">{{ message }}</option>
+                </select>
+                <button @click="goToNextPage">Search</button>
+            </div>
+        </main>
+    </div>
+</template>
+
 <script>
-    import router from '@/router'
-    let myString = "";
+    import router from "@/router";
+    import axios from "axios";
+    import { ref, onMounted } from "vue";
 
     export default {
-        methods: {
-            goToNextPage() {
-               router.push({ name: 'gym', params: { myString } })
-               // router.push({ name: 'test' })
-               // testing
-            }
-        }
-    }
+        name: "HelloWorld",
+        setup() {
+            const messages = ref([]);
+            const myString = ref("");
+
+            onMounted(() => {
+                axios
+                    .get("http://localhost:8080/hello")
+                    .then((response) => {
+                        messages.value = response.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            });
+
+            const goToNextPage = () => {
+                router.push({ name: "gym", params: { myString: myString.value } });
+            };
+
+            return {
+                messages,
+                myString,
+                goToNextPage,
+            };
+        },
+    };
 </script>
-
-
-<script setup>
-    function SearchGym() {
-        console.log(selectedOption)
-        router.push({name:'gym'})
-    }
-
-</script>
-<template>
-    <main>
-        <div class="dropdown-menu">
-            <select name="category" id="category" v-model="myString">
-                <option disabled selected hidden value="">Please enter a gym</option>
-                <option>Breda</option>
-                <option>Eindhoven</option>
-                <option>Denbosch</option>
-            </select>
-            <button @click="goToNextPage">Search</button>
-        </div>
-    </main>
-</template>
