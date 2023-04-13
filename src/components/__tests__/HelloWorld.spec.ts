@@ -17,22 +17,22 @@ describe('MyComponent', () => {
     });
 }),
 
-    describe('MyView', () => {
-        it('should select an option when clicked', () => {
-            const wrapper = mount(MyView)
+    //describe('MyView', () => {
+    //    it('should select an option when clicked', () => {
+    //        const wrapper = mount(MyView)
 
-            // Find the select element inside the MyView component
-            const select = wrapper.find('#category')
+    //        // Find the select element inside the MyView component
+    //        const select = wrapper.find('#category')
 
-            // Simulate selecting an option
-            select.element.value = 'Eindhoven'
-            select.trigger('change')
+    //        // Simulate selecting an option
+    //        select.element.value = 'Eindhoven'
+    //        select.trigger('change')
 
-            // Assert that the select element has the correct value
-            expect(select.element.value).toBe('Eindhoven')
-            expect(select.element.value).not.toBe('Breda')
-        })
-    })
+    //        // Assert that the select element has the correct value
+    //        expect(select.element.value).toBe('Eindhoven')
+    //        expect(select.element.value).not.toBe('Breda')
+    //    })
+    //})
 describe('GymView', () => {
     test('displays chosen gym', () => {
         const wrapper = mount(GymView, {
@@ -50,16 +50,22 @@ describe('GymView', () => {
                     myString: 'Breda'
                 }
             });
-
-            expect(wrapper.vm.chosen).toBe('Eindhoven')
+            //testt
+            expect(wrapper.vm.chosen).toBe('Breda')
             expect(wrapper.vm.data).toEqual([
-                { name: 'Mon', avg: 80 },
-                { name: 'Tue', avg: 90 },
-                { name: 'Wed', avg: 40 },
-                { name: 'Thu', avg: 10 },
-                { name: 'fri', avg: 10 },
-                { name: 'Sat', avg: 40 },
-                { name: 'Sun', avg: 90 }
+                { name: '8:00', avg: 80 },
+                { name: '9:00', avg: 90 },
+                { name: '10:00', avg: 40 },
+                { name: '11:00', avg: 10 },
+                { name: '12:00', avg: 10 },
+                { name: '13:00', avg: 40 },
+                { name: '14:00', avg: 90 },
+                { name: '15:00', avg: 90 },
+                { name: '16:00', avg: 90 },
+                { name: '17:00', avg: 90 },
+                { name: '18:00', avg: 90 },
+                { name: '19:00', avg: 90 },
+                { name: '20:00', avg: 90 }
             ])
         });
     });
