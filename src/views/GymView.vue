@@ -70,8 +70,7 @@
                 }
                 if (daynumber === 1) {
                     this.errormessage = ""
-                }
-              
+                }            
             }
         }
     }

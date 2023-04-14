@@ -18,7 +18,7 @@
     import { ref, onMounted } from "vue";
 
     export default {
-        name: "HelloWorld",
+        name: "Home",
         setup() {
             const messages = ref([]);
             const myString = ref("");

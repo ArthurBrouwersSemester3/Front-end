@@ -340,7 +340,6 @@
    
 
     let data = ref()
-    let number = 0
     export default defineComponent({
         name: 'LineChart',
         components: { Chart, Grid, Bar},
@@ -489,7 +488,6 @@
                     }
                     chosen.value = 'Denbosch'
                 }
-                console.log(data.value)
             })
 
             return { chosen, data, direction, margin, axis };
