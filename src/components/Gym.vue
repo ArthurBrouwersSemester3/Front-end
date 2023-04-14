@@ -7,8 +7,8 @@
 
         <template #layers>
             <Grid strokeDasharray="2,2" />
-            <Bar :dataKeys="['name', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
-            <Bar :dataKeys="['name', 'avg']" :barStyle="{ fill: '#84a2f4' }" />
+            <Bar :dataKeys="['time', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
+            <Bar :dataKeys="['time', 'value']" :barStyle="{ fill: '#84a2f4' }" />
         </template>
 
         <template #widgets>
@@ -355,10 +355,37 @@
                 required: true
             }
         },
+
+
         setup(props) {
             const chosen = ref('');
-            
-            if (props.myString === 'Eindhoven') {
+
+            let myData: [];
+            async function getData(gym) {
+                try {
+                    const response = await fetch(`http://localhost:8080/hello1?gym=${gym}`);
+                    if (response.ok) {
+                        const jsonData = await response.json();
+                        return jsonData;
+                    } else {
+                        console.error('Failed to fetch data from the server');
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch data from the server:', error);
+                }
+            }
+
+            async function loadData() {
+                const fetchedData = await getData(props.myString);
+                data.value = fetchedData;
+                chosen.value = props.myString;
+                console.log(props.myString);
+                console.log(data.value);
+            }
+
+            loadData();
+
+/*            if (props.myString === 'Eindhoven') {
                 data = ref(EindhovenDataMon)
                 chosen.value = 'Eindhoven';
             }
@@ -369,7 +396,9 @@
             else if (props.myString === 'Denbosch') {
                 data = ref(DenboschDataMon)
                 chosen.value = 'Denbosch';
-            }
+            }*/
+           // console.log(data);
+
             const direction = ref('horizontal')
             const margin = ref({
                 left: 0,
@@ -391,10 +420,10 @@
                     ticks: 8
                 }
             });
-            watchEffect(() => {
+/*            watchEffect(() => {
                    
                 if (props.myString === 'Eindhoven') {
-                    console.log(props.buttonValue)
+                  //  console.log(props.buttonValue)
                     if (props.buttonValue === '0') {
                         console.log('mon')
                         data.value = EindhovenDataMon
@@ -489,8 +518,8 @@
                     }
                     chosen.value = 'Denbosch'
                 }
-                console.log(data.value)
-            })
+               // console.log(data.value)
+            })*/
 
             return { chosen, data, direction, margin, axis };
         }
