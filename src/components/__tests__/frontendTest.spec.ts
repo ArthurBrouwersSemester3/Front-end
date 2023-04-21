@@ -2,7 +2,6 @@ import { describe, it, expect, test } from 'vitest'
 import ResizeObserver from 'resize-observer-polyfill'
 
 import { mount } from '@vue/test-utils';
-import MyComponent from '../Contact.vue';
 import GymView from '@/views/GymView.vue'
 import MyView from '@/views/HomeView.vue'
 import Gym from '@/components/Gym.vue'
@@ -10,9 +9,9 @@ import Gym from '@/components/Gym.vue'
 window.ResizeObserver = ResizeObserver
 
 
-describe('MyComponent', () => {
+describe('Gym', () => {
     it('renders correctly', () => {
-        const wrapper = mount(MyComponent);
+        const wrapper = mount(Gym);
         expect(wrapper.html()).toMatchSnapshot();
     });
 }),

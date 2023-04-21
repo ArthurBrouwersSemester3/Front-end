@@ -363,7 +363,7 @@
             let myData: [];
             async function getData(gym) {
                 try {
-                    const response = await fetch(`http://localhost:8080/hello1?gym=${gym}`);
+                    const response = await fetch(`http://localhost:8080/graphdata?gym=${gym}`);
                     if (response.ok) {
                         const jsonData = await response.json();
                         return jsonData;

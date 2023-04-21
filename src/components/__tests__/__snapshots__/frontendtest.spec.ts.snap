@@ -1,3 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Gym > renders correctly 1`] = `
+"<div class=\\"chart\\"><svg width=\\"500\\" height=\\"420\\" viewBox=\\"0 0 500 420\\">
+    <g class=\\"layers\\">
+      <!--v-if-->
+      <g class=\\"layer-bar\\"><text>No Data</text>
+        <!--v-if-->
+      </g>
+      <g class=\\"layer-bar\\"><text>No Data</text>
+        <!--v-if-->
+      </g>
+    </g>
+    <g class=\\"axis\\">
+      <g class=\\"layer-axis-x\\" transform=\\"translate(0, 400)\\"></g>
+      <g class=\\"layer-axis-y\\" transform=\\"translate(40, 0)\\"></g>
+    </g>
+  </svg>
+  <div class=\\"widgets\\"></div>
+</div>"
+`;
+
 exports[`MyComponent > renders correctly 1`] = `""`;
