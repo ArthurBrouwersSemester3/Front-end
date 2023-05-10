@@ -42,7 +42,7 @@ describe('Gym', () => {
             expect(wrapper.find('h1').text()).toBe('Breda')
         })
     }),
-
+    //test
     describe('Gym', () => {
         it('Loads correct data for graph', () => {
             const wrapper = mount(Gym, {
