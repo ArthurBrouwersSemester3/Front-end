@@ -1,7 +1,8 @@
 {
   "extends": "./tsconfig.app.json",
-  "exclude": [],
+  "exclude": [ "node_modules", "build", "build-vitest" ],
   "compilerOptions": {
+    "outDir": "./build-vitest",
     "allowJs": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -21,6 +22,8 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
   ]
 }

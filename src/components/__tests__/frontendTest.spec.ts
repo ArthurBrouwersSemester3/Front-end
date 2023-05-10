@@ -32,26 +32,26 @@ describe('Gym', () => {
     //        expect(select.element.value).not.toBe('Breda')
     //    })
     //})
-describe('GymView', () => {
-    test('displays chosen gym', () => {
-        const wrapper = mount(GymView, {
-            props: {
-                myString: 'Breda'
-            }
+    describe('GymView', () => {
+        test('displays chosen gym', () => {
+            const wrapper = mount(GymView, {
+                props: {
+                    myString: 'Breda'
+                }
+            })
+            expect(wrapper.find('h1').text()).toBe('Breda')
         })
-        expect(wrapper.find('h1').text()).toBe('Breda')
-    })
-}),
+    }),
+
     describe('Gym', () => {
         it('Loads correct data for graph', () => {
             const wrapper = mount(Gym, {
                 props: {
-                    myString: 'Breda'
+                    myString: 'Breda',
                 }
             });
             //testt
-            expect(wrapper.vm.chosen).toBe('Breda')
-            expect(wrapper.vm.data).toEqual([
+            expect(wrapper.vm.$data).toEqual([
                 { name: '8:00', avg: 80 },
                 { name: '9:00', avg: 90 },
                 { name: '10:00', avg: 40 },
