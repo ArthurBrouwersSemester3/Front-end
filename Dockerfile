@@ -19,8 +19,8 @@ COPY . .
 # Build the application
 RUN npm run build
 
-ENV PORT=8080
+ENV PORT=5173
 
-EXPOSE 8080
+EXPOSE 5173
 # Set the command to run when the container starts
 CMD ["npm", "run", "dev"]
