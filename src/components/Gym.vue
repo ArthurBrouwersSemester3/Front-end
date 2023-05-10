@@ -2,13 +2,26 @@
     <Chart :size="{ width: 500, height: 420 }"
            :data="data"
            :margin="margin"
-           :direction="direction"
-           :axis="axis">
+           :axis="{ 
+                primary: {
+                    type: 'band',
+                    format: (val: string) => {
+                        return val
+                    },
+                    domain: [0, 10]
+                },
+                secondary: {
+                    domain: ['0', '100'],
+                    type: 'linear',
+                    ticks: 8
+                } 
+                    }">
+
 
         <template #layers>
             <Grid strokeDasharray="2,2" />
-            <Bar :dataKeys="['name', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
-            <Bar :dataKeys="['name', 'avg']" :barStyle="{ fill: '#84a2f4' }" />
+            <Bar :dataKeys="['time', 'pl']" :barStyle="{ fill: '#90e0ef' }" />
+            <Bar :dataKeys="['time', 'value']" :barStyle="{ fill: '#84a2f4' }" />
         </template>
 
         <template #widgets>
@@ -352,25 +365,38 @@
             },
             buttonValue: {
                 type: String,
-                required: true
             }
         },
+
+
         setup(props) {
             const chosen = ref('');
-            
-            if (props.myString === 'Eindhoven') {
-                data = ref(EindhovenDataMon)
-                chosen.value = 'Eindhoven';
+
+            let myData: [];
+            async function getData(gym: any) {
+                try {
+                    const response = await fetch(`http://localhost:8080/graphdata?gym=${gym}`);
+                    if (response.ok) {
+                        const jsonData = await response.json();
+                        return jsonData;
+                    } else {
+                        console.error('Failed to fetch data from the server');
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch data from the server:', error);
+                }
             }
-            else if (props.myString === 'Breda') {
-                data = ref(BredaDataMon)
-                chosen.value = 'Breda';
+
+            async function loadData() {
+                const fetchedData = await getData(props.myString);
+                data.value = fetchedData;
+                chosen.value = props.myString;
+                console.log(props.myString);
+                console.log(data.value);
             }
-            else if (props.myString === 'Denbosch') {
-                data = ref(DenboschDataMon)
-                chosen.value = 'Denbosch';
-            }
-            const direction = ref('horizontal')
+
+            loadData();
+
             const margin = ref({
                 left: 0,
                 top: 20,
@@ -391,108 +417,8 @@
                     ticks: 8
                 }
             });
-            watchEffect(() => {
-                   
-                if (props.myString === 'Eindhoven') {
-                    console.log(props.buttonValue)
-                    if (props.buttonValue === '0') {
-                        console.log('mon')
-                        data.value = EindhovenDataMon
-                    }
-                    else if (props.buttonValue === '1') {
-                        console.log('Tue')
-                        data.value = EindhovenDataTue
-                    }
-                    else if (props.buttonValue === '2') {
-                        console.log('Wed')
-                        data.value = EindhovenDataWed
-                    }
-                    else if (props.buttonValue === '3') {
-                        console.log('Thu')
-                        data.value = EindhovenDataThu
-                    }
-                    else if (props.buttonValue === '4') {
-                        console.log('Fri')
-                        data.value = EindhovenDataFri
-                    }
-                    else if (props.buttonValue === '5') {
-                        console.log('Sat')
-                        data.value = EindhovenDataSat
-                    }
-                    else if (props.buttonValue === '6') {
-                        console.log('Sun')
-                        data.value = EindhovenDataSun
-                    }
-                    chosen.value = 'Eindhoven'
-                }
 
-                else if (props.myString === 'Breda') {
-                    if (props.buttonValue === '0') {
-                        console.log('mon')
-                        data.value = BredaDataMon
-                    }
-                    else if (props.buttonValue === '1') {
-                        console.log('Tue')
-                        data.value = BredaDataTue
-                    }
-                    else if (props.buttonValue === '2') {
-                        console.log('Wed')
-                        data.value = BredaDataWed
-                    }
-                    else if (props.buttonValue === '3') {
-                        console.log('Thu')
-                        data.value = BredaDataThu
-                    }
-                    else if (props.buttonValue === '4') {
-                        console.log('Fri')
-                        data.value = BredaDataFri
-                    }
-                    else if (props.buttonValue === '5') {
-                        console.log('Sat')
-                        data.value = BredaDataSat
-                    }
-                    else if (props.buttonValue === '6') {
-                        console.log('Sun')
-                        data.value = BredaDataSun
-                    }
-                    chosen.value = 'Breda'
-                }
-
-                  else if (props.myString === 'Denbosch') {
-                    if (props.buttonValue === '0') {
-                        console.log('mon')
-                        data.value = DenboschDataMon
-                    }
-                    else if (props.buttonValue === '1') {
-                        console.log('Tue')
-                        data.value = DenboschDataTue
-                    }
-                    else if (props.buttonValue === '2') {
-                        console.log('Wed')
-                        data.value = DenboschDataWed
-                    }
-                    else if (props.buttonValue === '3') {
-                        console.log('Thu')
-                        data.value = DenboschDataThu
-                    }
-                    else if (props.buttonValue === '4') {
-                        console.log('Fri')
-                        data.value = DenboschDataFri
-                    }
-                    else if (props.buttonValue === '5') {
-                        console.log('Sat')
-                        data.value = DenboschDataSat
-                    }
-                    else if (props.buttonValue === '6') {
-                        console.log('Sun')
-                        data.value = DenboschDataSun
-                    }
-                    chosen.value = 'Denbosch'
-                }
-                console.log(data.value)
-            })
-
-            return { chosen, data, direction, margin, axis };
+            return { chosen, data, margin, axis };
         }
     })
 </script>

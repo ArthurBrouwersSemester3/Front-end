@@ -1,4 +1,23 @@
 {
+  "compilerOptions": {
+    "types": [ "node", "vite/client", "jest", "vue-router", "vue" ],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [ "src/*" ]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "shims-vue.d.ts"],
   "files": [],
   "references": [
     {

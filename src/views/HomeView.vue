@@ -25,7 +25,7 @@
 
             onMounted(() => {
                 axios
-                    .get("http://localhost:8080/hello")
+                    .get("http://localhost:8080/gyms")
                     .then((response) => {
                         messages.value = response.data;
                     })
