@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import GymView from '../views/GymView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/home',
