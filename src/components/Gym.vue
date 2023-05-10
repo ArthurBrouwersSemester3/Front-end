@@ -20,7 +20,7 @@
 <script lang="ts">
     import { defineComponent, ref, watchEffect } from 'vue'
     import { Bar, Chart, Grid} from 'vue3-charts'
-    //
+    
     export const EindhovenDataMon = [
         { name: '8:00', avg: 80},
         { name: '9:00', avg: 90},
