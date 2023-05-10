@@ -365,7 +365,6 @@
             },
             buttonValue: {
                 type: String,
-                required: true
             }
         },
 
