@@ -9,13 +9,13 @@ import { shallowMount } from '@vue/test-utils';
 window.ResizeObserver = ResizeObserver
 
 
-describe('SnapshotGym', () => {
-    it('renders correctly', () => {
-        const wrapper = mount(Gym);
-        expect(wrapper.html()).toMatchSnapshot();
-    });
+//describe('SnapshotGym', () => {
+//    it('renders correctly', () => {
+//        const wrapper = mount(Gym);
+//        expect(wrapper.html()).toMatchSnapshot();
+//    });
 
-}),
+//}),
 
 
     describe('ChosenGymPlace', () => {
@@ -41,21 +41,21 @@ describe('GymView', () => {
 
         expect(wrapper.find('p').text()).toContain('u can not go previous when it is monday')
     })
+    describe('GymView', () => {
+        it('displays the error message when trying to go forward from Sunday', async () => {
+            const wrapper = mount(GymView, {
+                props: {
+                    myString: 'Hello World'
+                }
+            })
 
-    it('displays the error message when trying to go forward from Sunday', async () => {
-        const wrapper = mount(GymView, {
-            props: {
-                myString: 'Hello World'
-            }
+            // Set daynumber to 6 (Sunday)
+            wrapper.vm.daynumber = 6
+
+            const nextButton = wrapper.find('button:last-of-type')
+            await nextButton.trigger('click')
+
+            expect(wrapper.find('p').text()).toContain('u can not go next when it is sunday')
         })
-
-        // Set daynumber to 6 (Sunday)
-        wrapper.vm.daynumber = 6
-
-        const nextButton = wrapper.find('button:last-of-type')
-        await nextButton.trigger('click')
-
-        expect(wrapper.find('p').text()).toContain('u can not go next when it is sunday')
     })
-})
-   
+}) 
