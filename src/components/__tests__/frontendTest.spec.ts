@@ -41,7 +41,6 @@ describe('GymView', () => {
 
         expect(wrapper.find('p').text()).toContain('u can not go previous when it is monday')
     })
-    describe('GymView', () => {
         it('displays the error message when trying to go forward from Sunday', async () => {
             const wrapper = mount(GymView, {
                 props: {
@@ -49,8 +48,11 @@ describe('GymView', () => {
                 }
             })
 //
+            // Cast to the component type with the daynumber property
+            const gymView = wrapper.vm as any as { daynumber: number }
+
             // Set daynumber to 6 (Sunday)
-            wrapper.vm.daynumber = 6
+            gymView.daynumber = 6
 
             const nextButton = wrapper.find('button:last-of-type')
             await nextButton.trigger('click')
@@ -58,4 +60,3 @@ describe('GymView', () => {
             expect(wrapper.find('p').text()).toContain('u can not go next when it is sunday')
         })
     })
-}) 
