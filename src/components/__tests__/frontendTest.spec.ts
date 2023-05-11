@@ -48,7 +48,7 @@ describe('GymView', () => {
                     myString: 'Hello World'
                 }
             })
-
+//
             // Set daynumber to 6 (Sunday)
             wrapper.vm.daynumber = 6
 
