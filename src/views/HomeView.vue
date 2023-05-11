@@ -2,7 +2,7 @@
     <div>
         <main>
             <div class="dropdown-menu">
-                <select name="category" id="category" v-model="myString">
+                <select ref="category" name="category" id="category" v-model="myString">
                     <option disabled selected hidden value="">Please enter a gym</option>
                     <option v-for="message in messages" :key="message">{{ message }}</option>
                 </select>
