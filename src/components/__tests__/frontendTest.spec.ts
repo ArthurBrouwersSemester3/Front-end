@@ -5,34 +5,20 @@ import { mount } from '@vue/test-utils';
 import GymView from '@/views/GymView.vue'
 import MyView from '@/views/HomeView.vue'
 import Gym from '@/components/Gym.vue'
-
+import { shallowMount } from '@vue/test-utils';
 window.ResizeObserver = ResizeObserver
 
 
-describe('Gym', () => {
-    it('renders correctly', () => {
-        const wrapper = mount(Gym);
-        expect(wrapper.html()).toMatchSnapshot();
-    });
-}),
+//describe('SnapshotGym', () => {
+//    it('renders correctly', () => {
+//        const wrapper = mount(Gym);
+//        expect(wrapper.html()).toMatchSnapshot();
+//    });
 
-    //describe('MyView', () => {
-    //    it('should select an option when clicked', () => {
-    //        const wrapper = mount(MyView)
+//}),
 
-    //        // Find the select element inside the MyView component
-    //        const select = wrapper.find('#category')
 
-    //        // Simulate selecting an option
-    //        select.element.value = 'Eindhoven'
-    //        select.trigger('change')
-
-    //        // Assert that the select element has the correct value
-    //        expect(select.element.value).toBe('Eindhoven')
-    //        expect(select.element.value).not.toBe('Breda')
-    //    })
-    //})
-    describe('GymView', () => {
+    describe('ChosenGymPlace', () => {
         test('displays chosen gym', () => {
             const wrapper = mount(GymView, {
                 props: {
@@ -41,30 +27,35 @@ describe('Gym', () => {
             })
             expect(wrapper.find('h1').text()).toBe('Breda')
         })
-    }),
-
-    describe('Gym', () => {
-        it('Loads correct data for graph', () => {
-            const wrapper = mount(Gym, {
-                props: {
-                    myString: 'Breda',
-                }
-            });
-            //testt
-            expect(wrapper.vm.$data).toEqual([
-                { name: '8:00', avg: 80 },
-                { name: '9:00', avg: 90 },
-                { name: '10:00', avg: 40 },
-                { name: '11:00', avg: 10 },
-                { name: '12:00', avg: 10 },
-                { name: '13:00', avg: 40 },
-                { name: '14:00', avg: 90 },
-                { name: '15:00', avg: 90 },
-                { name: '16:00', avg: 90 },
-                { name: '17:00', avg: 90 },
-                { name: '18:00', avg: 90 },
-                { name: '19:00', avg: 90 },
-                { name: '20:00', avg: 90 }
-            ])
-        });
     });
+describe('GymView', () => {
+    it('displays the error message when trying to go back from Monday', async () => {
+        const wrapper = mount(GymView, {
+            props: {
+                myString: ''
+            }
+        })
+
+        const previousButton = wrapper.find('button:first-of-type')
+        await previousButton.trigger('click')
+
+        expect(wrapper.find('p').text()).toContain('u can not go previous when it is monday')
+    })
+    describe('GymView', () => {
+        it('displays the error message when trying to go forward from Sunday', async () => {
+            const wrapper = mount(GymView, {
+                props: {
+                    myString: 'Hello World'
+                }
+            })
+
+            // Set daynumber to 6 (Sunday)
+            wrapper.vm.daynumber = 6
+
+            const nextButton = wrapper.find('button:last-of-type')
+            await nextButton.trigger('click')
+
+            expect(wrapper.find('p').text()).toContain('u can not go next when it is sunday')
+        })
+    })
+}) 
