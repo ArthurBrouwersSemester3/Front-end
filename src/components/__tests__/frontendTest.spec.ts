@@ -16,7 +16,7 @@ window.ResizeObserver = ResizeObserver
 //    });
 
 //}),
-//test
+
 
     describe('ChosenGymPlace', () => {
         test('displays chosen gym', () => {
