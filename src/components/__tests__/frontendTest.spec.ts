@@ -48,6 +48,9 @@ describe('GymView', () => {
                     myString: 'Hello World'
                 }
             })
+//
+            // Cast to the component type with the daynumber property
+            const gymView = wrapper.vm as any as { daynumber: number }
 
             // Cast to the component type with the daynumber property
             const gymView = wrapper.vm as any as { daynumber: number }
