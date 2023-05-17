@@ -12,15 +12,20 @@ RUN npm install \
           vue3-charts --save \
           resize-observer-polyfill --save-dev
 
-
 # Copy the rest of the application files to the container
 COPY . .
 
 # Build the application
 RUN npm run build
 
-ENV PORT=5174
+# Install serve as a global dependency
+RUN npm install -g serve
 
-EXPOSE 5174
+# Set the port to 8080
+ENV PORT=80
+
+# Expose the port
+EXPOSE 80
+
 # Set the command to run when the container starts
-CMD ["npm", "run", "dev"]
+CMD ["serve", "-s", "-l", "80", "dist"]

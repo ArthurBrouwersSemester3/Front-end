@@ -30,7 +30,8 @@
           return {
               buttonValue: String,
               required: true,
-              errormessage: String
+              errormessage: String,
+              daynumber: 0
           }
 
         },
