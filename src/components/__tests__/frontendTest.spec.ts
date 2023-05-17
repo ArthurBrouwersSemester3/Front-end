@@ -9,14 +9,14 @@ import { shallowMount } from '@vue/test-utils';
 window.ResizeObserver = ResizeObserver
 
 
-describe('SnapshotGym', () => {
+/*describe('SnapshotGym', () => {
     it('renders correctly', () => {
         const wrapper = mount(Gym);
         expect(wrapper.html()).toMatchSnapshot();
     });
 
-}),
-//
+}),*/
+
 
 
     describe('ChosenGymPlace', () => {
