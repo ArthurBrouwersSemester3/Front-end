@@ -50,8 +50,7 @@
                     this.errormessage = "u can not go previous when it is monday"
                 }
                 else {
-                    daynumber--,
-                    console.log(daynumber)
+                    daynumber--
                     this.handleButtonClick(daynumber.toString());
                 }
             
@@ -65,8 +64,7 @@
                     this.errormessage = "u can not go next when it is sunday"
                 }
                 else {
-                    daynumber++,
-                    console.log(daynumber)
+                    daynumber++
                     this.handleButtonClick(daynumber.toString());
                 }
                 if (daynumber === 1) {
