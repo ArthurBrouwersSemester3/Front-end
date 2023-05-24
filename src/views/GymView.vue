@@ -1,5 +1,6 @@
 <script setup>
     import Gymgraph from '../components/Gym.vue' 
+    import Gymgraphs from '../components/Gym.vue' 
 </script>
 
 
@@ -33,7 +34,7 @@
               errormessage: String,
               daynumber: 0
           }
-
+          //testing
         },
         mounted() {
             this.buttonValue = ""
