@@ -3,21 +3,7 @@ import ResizeObserver from 'resize-observer-polyfill'
 
 import { mount } from '@vue/test-utils';
 import GymView from '@/views/GymView.vue'
-import MyView from '@/views/HomeView.vue'
-import Gym from '@/components/Gym.vue'
-import { shallowMount } from '@vue/test-utils';
 window.ResizeObserver = ResizeObserver
-
-
-/*describe('SnapshotGym', () => {
-    it('renders correctly', () => {
-        const wrapper = mount(Gym);
-        expect(wrapper.html()).toMatchSnapshot();
-    });
-
-}),*/
-
-
 
     describe('ChosenGymPlace', () => {
         test('displays chosen gym', () => {
