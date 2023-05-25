@@ -7,7 +7,12 @@ import ProfileView from '../views/ProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
+    routes: [
+        {
+            path: '/',
+            name: 'Login',
+            component: LoginView,
+        },
     {
       path: '/home',
       name: 'home',
@@ -20,11 +25,7 @@ const router = createRouter({
           component: GymView,
           props: true
       },
-      {
-          path: '/Login',
-          name: 'Login',
-          component: LoginView,
-      },
+
       {
           path: '/Profile',
           name: 'Profile',
