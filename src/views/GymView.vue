@@ -1,6 +1,5 @@
 <script setup>
     import Gymgraph from '../components/Gym.vue' 
-    import Gymgraph from '../components/Gym.vue' 
 </script>
 
 
