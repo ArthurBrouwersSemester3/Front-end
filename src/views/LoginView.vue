@@ -17,6 +17,7 @@
             return {
                 login() {
                     auth0.loginWithRedirect();
+                },
                 }
 
             };
