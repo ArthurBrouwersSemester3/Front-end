@@ -1,8 +1,8 @@
 <template>
+    <button @click="logout">Log out</button>
     <div v-if="isLoading">Loading ...</div>
     <div v-else>
         <h2>User Profile</h2>
-        <button @click="login">Log in</button>
         <pre v-if="isAuthenticated">
         <code>{{ user }}</code>
       </pre>
@@ -17,12 +17,18 @@
             const auth0 = useAuth0();
 
             return {
-                login: () => auth0.loginWithRedirect(),
+                Login: () => auth0.loginWithRedirect(),
                 user: auth0.user,
                 isAuthenticated: auth0.isAuthenticated,
                 isLoading: auth0.isLoading,
+                logout() {
+                    auth0.logout({
+                        logoutParams: {
+                            returnTo: window.location.origin
+                        }
+                    });
+                }
             };
         }
     };
-
 </script>
