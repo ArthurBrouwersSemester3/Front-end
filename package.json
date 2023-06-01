@@ -13,7 +13,7 @@
     "format": "prettier --write src/",
     "pretest": "npm run build",
     "test": "npm run test:unit",
-    "serve": "vite"
+    "serve": "vite --port 5174 --host 0.0.0.0"
   },
   "dependencies": {
     "@auth0/auth0-vue": "^2.2.0",

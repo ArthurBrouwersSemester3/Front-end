@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import router from "@/router";
+    import router from "../router";
     import axios from "axios";
     import { ref, onMounted } from "vue";
     import { useAuth0 } from '@auth0/auth0-vue';
@@ -27,7 +27,7 @@
 
             onMounted(() => {
                 axios
-                    .get("http://localhost:8080/gyms")
+                    .get("/gyms")
                     .then((response) => {
                         messages.value = response.data;
                     })

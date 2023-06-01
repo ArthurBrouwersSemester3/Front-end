@@ -6,7 +6,7 @@
 <script>
     // Composition API
     import { useAuth0 } from '@auth0/auth0-vue';
-    import router from "@/router";
+    import router from "../router";
 
     export default {
         setup() {
