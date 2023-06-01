@@ -25,15 +25,20 @@
             const myString = ref("");
             const { getAccessTokenSilently } = useAuth0();
 
-            onMounted(() => {
-                axios
-                    .get("/gyms")
-                    .then((response) => {
-                        messages.value = response.data;
-                    })
-                    .catch((error) => {
-                        console.error(error);
+            onMounted(async () => {
+                try {
+                    const token = await getAccessTokenSilently();
+
+                    const response = await axios.get("/gyms", {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
                     });
+
+                    messages.value = response.data;
+                } catch (error) {
+                    console.error(error);
+                }
             });
 
             const goToNextPage = () => {
