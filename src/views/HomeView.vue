@@ -16,12 +16,14 @@
     import router from "@/router";
     import axios from "axios";
     import { ref, onMounted } from "vue";
+    import { useAuth0 } from '@auth0/auth0-vue';
 
     export default {
         name: "HelloWorld",
         setup() {
             const messages = ref([]);
             const myString = ref("");
+            const { getAccessTokenSilently } = useAuth0();
 
             onMounted(() => {
                 axios
@@ -39,10 +41,21 @@
             };
 
             return {
+
                 messages,
                 myString,
                 goToNextPage,
+                doSomethingWithToken: async () => {
+                    const token = await getAccessTokenSilently();
+                    const response = await fetch('https://api.example.com/posts', {
+                        headers: {
+                            Authorization: 'Bearer ' + token
+                        }
+                    });
+                    const data = await response.json();
+                }
             };
         },
     };
 </script>
+    
