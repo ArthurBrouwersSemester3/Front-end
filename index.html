@@ -24,24 +24,6 @@
 
   </body>
 </html>
-<script lang="">
-    import { useAuth0 } from '@auth0/auth0-vue'
-
-    export default {
-        setup() {
-            const auth0 = useAuth0();
-            auth.isAuthenticated().then((loggedIn) => {
-                if (loggedIn) {
-                    // User is logged in
-                    console.log('User is logged in');
-                } else {
-                    // User is not logged in
-                    console.log('User is not logged in');
-                }
-            });
-        }
-    }
-</script>
 
 <style scoped>
     .image {

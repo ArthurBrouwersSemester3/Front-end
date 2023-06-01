@@ -47,7 +47,7 @@
                 goToNextPage,
                 doSomethingWithToken: async () => {
                     const token = await getAccessTokenSilently();
-                    const response = await fetch('https://api.example.com/posts', {
+                    const response = await fetch('http://localhost:8080/private', {
                         headers: {
                             Authorization: 'Bearer ' + token
                         }
