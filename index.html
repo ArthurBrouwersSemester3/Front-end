@@ -9,7 +9,7 @@
 </head>
   <body>
       <header>
-          <div v-if="isAuthenticated" class="navbar">
+          <div v-if="auth0.user.value" class="navbar">
               <div class="image" style="text-align: left">
                 <img src="src\images\Gymstats_logo4.png" width="120" height="64" alt="LOGO"/>
               </div>
@@ -24,6 +24,24 @@
 
   </body>
 </html>
+<script lang="">
+    import { useAuth0 } from '@auth0/auth0-vue'
+
+    export default {
+        setup() {
+            const auth0 = useAuth0();
+            auth.isAuthenticated().then((loggedIn) => {
+                if (loggedIn) {
+                    // User is logged in
+                    console.log('User is logged in');
+                } else {
+                    // User is not logged in
+                    console.log('User is not logged in');
+                }
+            });
+        }
+    }
+</script>
 
 <style scoped>
     .image {
