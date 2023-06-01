@@ -13,7 +13,8 @@ app.use(
         domain: "dev-t2m2li4fw54sig6t.us.auth0.com",
         clientId: "2vcHKbLOKFkEaQvn826JE41KVXW7FV50",
         authorizationParams: {
-            redirect_uri: window.location.origin
+            redirect_uri: window.location.origin,
+            audience: "https;//gymstarsAPI/",
         }
     })
 );

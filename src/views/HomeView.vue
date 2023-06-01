@@ -15,7 +15,6 @@
 <script>
     import router from "@/router";
     import axios from "axios";
-    import axios from "axios";
     import { ref, onMounted } from "vue";
 
     export default {
