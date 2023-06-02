@@ -58,7 +58,7 @@
             async function getData(gym: any) {
                 const token = await getAccessTokenSilently();
                 try {
-                    const response = await fetch(`/graphdata?gym=${gym}`, {
+                    const response = await fetch(`/api/graphdata?gym=${gym}`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },

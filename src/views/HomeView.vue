@@ -26,21 +26,20 @@
             const { getAccessTokenSilently } = useAuth0();
 
             onMounted(async () => {
-                try {
-                    const token = await getAccessTokenSilently();
+              try {
+                const token = await getAccessTokenSilently();
 
-                    const response = await axios.get("/gyms", {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
+                const response = await axios.get("/api/gyms", {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                });
 
-                    messages.value = response.data;
-                } catch (error) {
-                    console.error(error);
-                }
+                messages.value = response.data;
+              } catch (error) {
+                console.error(error);
+              }
             });
-
             const goToNextPage = () => {
                 router.push({ name: "gym", params: { myString: myString.value } });
             };

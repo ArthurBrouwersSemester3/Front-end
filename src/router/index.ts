@@ -18,7 +18,6 @@ const router = createRouter({
       path: '/home',
       name: 'home',
         component: HomeView,
-        beforeEnter: createAuthGuard(),
       },
 
       {
@@ -26,7 +25,6 @@ const router = createRouter({
           name: 'gym',
           component: GymView,
           props: true,
-          beforeEnter: createAuthGuard(),
       },
 
       {
