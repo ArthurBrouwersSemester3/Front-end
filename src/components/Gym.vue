@@ -33,7 +33,7 @@
 <script lang="ts">
     import { defineComponent, ref } from 'vue'
     import { Bar, Chart, Grid} from 'vue3-charts'
-
+    import { useAuth0 } from '@auth0/auth0-vue';
     let data = ref()
     let number = 0
     export default defineComponent({
@@ -53,11 +53,16 @@
 
         setup(props) {
             const chosen = ref('');
-
+            const { getAccessTokenSilently } = useAuth0();
             let myData: [];
             async function getData(gym: any) {
+                const token = await getAccessTokenSilently();
                 try {
-                    const response = await fetch(`http://localhost:8080/graphdata?gym=${gym}`);
+                    const response = await fetch(`/graphdata?gym=${gym}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
                     if (response.ok) {
                         const jsonData = await response.json();
                         return jsonData;

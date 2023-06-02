@@ -50,15 +50,8 @@
                 messages,
                 myString,
                 goToNextPage,
-                doSomethingWithToken: async () => {
-                    const token = await getAccessTokenSilently();
-                    const response = await fetch('http://localhost:8080/private', {
-                        headers: {
-                            Authorization: 'Bearer ' + token
-                        }
-                    });
-                    const data = await response.json();
-                }
+              
+                
             };
         },
     };

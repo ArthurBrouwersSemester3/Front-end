@@ -20,6 +20,8 @@ export default defineConfig({
     server: {
         proxy: {
             '/gyms': 'http://localhost:8080/',
+            '/graphdata': 'http://localhost:8080/',
+
         }
     },
     plugins: [vue()]
