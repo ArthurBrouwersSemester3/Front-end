@@ -1,18 +1,4 @@
-//import { fileURLToPath, URL } from 'node:url'
 
-//import { defineConfig } from 'vite'
-//import vue from '@vitejs/plugin-vue'
-//import vueJsx from '@vitejs/plugin-vue-jsx'
-
-//// https://vitejs.dev/config/
-//export default defineConfig({
-//  plugins: [vue(), vueJsx()],
-//  resolve: {
-//    alias: {
-//      '@': fileURLToPath(new URL('./src', import.meta.url))
-//    }
-//  }
-//})
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -20,12 +6,13 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: 'http://localhost:8080',
+                target: 'http://backendcontainer:8080', // Replace 'backend-container' with the name of your backend container
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
         },
     },
     plugins: [vue()],
-})
+});
+
 
