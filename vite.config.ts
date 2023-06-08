@@ -1,14 +1,11 @@
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
     server: {
-        host: true,
-        port: 5174,
         proxy: {
             '/api': {
-                target: 'http://localhost:8080', // Replace 'backend-container' with the name of your backend container
+                target: 'http://172.17.0.2:8080', // Update the IP address here
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
@@ -16,4 +13,5 @@ export default defineConfig({
     },
     plugins: [vue()],
 });
+
 
