@@ -33,9 +33,6 @@
                   headers: {
                     Authorization: `Bearer ${token}`,
                     },
-                    params: {
-                        timestamp: Date.now(), // Add a cache-busting parameter
-                    },
                 });
 
                 messages.value = response.data;
