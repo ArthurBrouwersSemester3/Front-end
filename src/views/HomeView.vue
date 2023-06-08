@@ -32,7 +32,7 @@
                 const response = await axios.get("/api/gyms", {
                   headers: {
                     Authorization: `Bearer ${token}`,
-                  },
+                    },
                 });
 
                 messages.value = response.data;
