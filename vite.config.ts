@@ -6,7 +6,7 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: 'http://backendcontainer:8080', // Replace 'backend-container' with the name of your backend container
+                target: 'http://localhost:8080', // Replace 'backend-container' with the name of your backend container
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
@@ -14,5 +14,4 @@ export default defineConfig({
     },
     plugins: [vue()],
 });
-
 
